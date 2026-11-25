@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f5f0">
+    <meta name="description" content="A simple attendance calculator to help you stay above your 75% class attendance goal.">
+    <title>Attendly — Attendance, made clear</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Attendly home">
+          <span class="brand-mark" aria-hidden="true">a.</span>
+          <span>attendly</span>
+        </a>
+        <span class="topbar-note"><span class="live-dot" aria-hidden="true"></span> Your semester, in focus</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span> A little clarity goes a long way</p>
+        <h1 id="page-title">Show up for<br><span>your goals.</span></h1>
+        <p class="intro-copy">A clear view of where you are, and what it takes to stay on track.</p>
+      </section>
+
+      <section class="calculator" aria-label="Attendance calculator">
+        <form class="input-panel" id="attendance-form" novalidate>
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">Your class count</p>
+              <h2>Let’s do the math.</h2>
+            </div>
+            <span class="target-chip"><span aria-hidden="true">✳</span> 75% target</span>
+          </div>
+
+          <label class="field-label" for="total-classes">Classes held so far</label>
+          <div class="input-wrap">
+            <input id="total-classes" name="total-classes" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g. 40" required>
+            <span class="input-suffix">classes</span>
+          </div>
+
+          <label class="field-label second-label" for="attended-classes">Classes you attended</label>
+          <div class="input-wrap">
+            <input id="attended-classes" name="attended-classes" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 32" required>
+            <span class="input-suffix">classes</span>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+          <button class="calculate-button" type="submit">
+            Calculate my attendance <span aria-hidden="true">↗</span>
+          </button>
+          <p class="form-note"><span aria-hidden="true">⌁</span> Your numbers stay right here in your browser.</p>
+        </form>
+
+        <div class="results-panel" aria-live="polite" aria-atomic="true">
+          <div class="results-topline">
+            <p class="section-label">Your snapshot</p>
+            <span class="status-pill" id="status-pill">Waiting for numbers</span>
+          </div>
+
+          <div class="attendance-summary">
+            <span class="attendance-value" id="attendance-value">—<span>%</span></span>
+            <span class="attendance-caption">current attendance</span>
+          </div>
+
+          <div class="progress-track" id="progress-track" role="progressbar" aria-label="Current attendance compared with the 75% target" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="progress-fill" id="progress-fill"></span>
+            <span class="target-marker" aria-hidden="true"></span>
+          </div>
+          <div class="progress-labels"><span>0%</span><span class="target-label">75% goal</span><span>100%</span></div>
+
+          <p class="result-message" id="result-message">Enter your class counts to see where you stand.</p>
+
+          <div class="result-divider"></div>
+          <div class="detail-row">
+            <span class="detail-icon mint-icon" aria-hidden="true">↗</span>
+            <span class="detail-label" id="needed-label">Classes to reach 75%</span>
+            <strong class="detail-value" id="needed-value">—</strong>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon peach-icon" aria-hidden="true">−</span>
+            <span class="detail-label">Classes you can miss</span>
+            <strong class="detail-value" id="miss-value">—</strong>
+          </div>
+          <p class="results-footnote">Based on your current classes held and attended.</p>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>Small steps. Strong semesters.</span>
+        <span>Made for showing up <span aria-hidden="true">✳</span></span>
+      </footer>
+    </main>
+  </body>
+</html>
